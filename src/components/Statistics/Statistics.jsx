@@ -4,27 +4,27 @@ import styles from './statistics.module.css';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return total ? (
-    <ul>
-      <li>Good: {good}</li>
-      <li>Neutral: {neutral}</li>
-      <li>Bad: {bad}</li>
-      <li>Total: {total}</li>
-      <li>
+    <ul className={styles.list}>
+      <li className={styles.list__item}>Good: {good}</li>
+      <li className={styles.list__item}>Neutral: {neutral}</li>
+      <li className={styles.list__item}>Bad: {bad}</li>
+      <li className={styles.list__item_total}>Total: {total}</li>
+      <li className={styles.list__item}>
         Positive feedback:
-        <span className={styles.feedbackResults}>{positivePercentage}</span>
+        <span className={styles.feedbackResults}>{positivePercentage}%</span>
       </li>
     </ul>
   ) : (
-    <Notification message="No feedback given yet" />
+    <Notification message="No feedback given" />
   );
 };
 
 Statistics.propTypes = {
-  good: PropTypes.number,
-  neutral: PropTypes.number,
-  bad: PropTypes.number,
-  total: PropTypes.number,
-  positivePercentage: PropTypes.number,
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
 
 export default Statistics;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FeedbackOptions from './components/FeedbackOptions';
 import Section from './components/Section/';
 import Statistics from './components/Statistics/';
-import styles from './index.css';
+import styles from './index.module.css';
 
 class App extends Component {
   state = {
@@ -23,11 +23,8 @@ class App extends Component {
   };
 
   countPositiveFeedback = () => {
-    const { good, neutral } = this.state;
-    const result = parseInt(
-      ((good + neutral) * 100) / this.countTotalFeedback(),
-    );
-    return ` ${result}%`;
+    const { good } = this.state;
+    return Math.round((good / this.countTotalFeedback()) * 100);
   };
 
   render() {
